@@ -1,10 +1,12 @@
 import React from 'react';
 import Navigations from '../Navigations/Navigations';
+import Service from '../Service/Service';
 
 const Home = () => {
     return (
         <div>
-            <Navigations></Navigations>
+
+            <Service></Service>
         </div>
     );
 };
