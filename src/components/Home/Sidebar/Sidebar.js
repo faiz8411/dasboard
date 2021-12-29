@@ -7,12 +7,6 @@ import useAuth from '../../hooks/useAuth';
 const Sidebar = () => {
     const { user, logout, superAdmin, admin } = useAuth()
 
-    // const [users, setUsers] = useState({})
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/allusers`)
-    //         .then((res) => res.json())
-    //         .then((data) => setUsers(data));
-    // }, []);
 
     return (
         <div>

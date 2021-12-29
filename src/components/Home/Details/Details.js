@@ -13,7 +13,7 @@ const Details = () => {
         alert('your order successfully added in my order')
         data.status = "pending"
         console.log(data)
-        fetch("http://localhost:5000/confirmOrder", {
+        fetch("https://powerful-savannah-04431.herokuapp.com/confirmOrder", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +26,7 @@ const Details = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${serviceId}`)
+        fetch(`https://powerful-savannah-04431.herokuapp.com/singleProduct/${serviceId}`)
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [serviceId])

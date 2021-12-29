@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, getIdToken, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, getIdToken, updateProfile, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import { useEffect } from "react";
 import initializedAuthentication from "../Home/firebaseInitialize";
 
@@ -26,6 +26,7 @@ const useFirebase = () => {
                 setAuthError('')
                 const newUser = { email, displayName: name }
                 setUser(newUser)
+                varifyEmail()
                 saveUser(email, name, 'POST')
                 updateProfile(auth.currentUser, {
                     displayName: name,
@@ -41,6 +42,13 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false))
     }
+    const varifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(result => {
+                console.log(result)
+            })
+    }
+    //   
     const loginUser = (email, password) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
@@ -57,6 +65,9 @@ const useFirebase = () => {
 
 
     }
+    const forgotPassword = (email) => {
+        return sendPasswordResetEmail(auth, email);
+    };
     const signWithGoogle = (location, navigate) => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
@@ -88,13 +99,13 @@ const useFirebase = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://powerful-savannah-04431.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setSuperAdmin(data.superAdmin))
     }, [user.email])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://powerful-savannah-04431.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.Admin))
     }, [user.email])
@@ -110,7 +121,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName }
-        fetch('http://localhost:5000/users', {
+        fetch('https://powerful-savannah-04431.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -126,6 +137,7 @@ const useFirebase = () => {
         isLoading,
         admin,
         authError,
+        forgotPassword,
         registerUser,
         logout,
         loginUser,

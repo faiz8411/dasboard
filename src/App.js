@@ -43,6 +43,9 @@ function App() {
               <Details></Details>
             </PrivateRoute>} />
             <Route path="/register" element={<Registration />}></Route>
+            <Route path="/register" element={<Registration />}></Route>
+            <Route path="/admin" element={<AdminRoute />}></Route>
+            {/* <Route path="dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route> */}
             <Route path="/dashboard" element={<PrivateRoute>
               <Dashboard />
             </PrivateRoute>}>

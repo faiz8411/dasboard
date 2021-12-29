@@ -5,7 +5,7 @@ const MakeAdmin = () => {
 
     const handleSuperAdminSubmit = (e) => {
         const user = { email }
-        fetch('http://localhost:5000/users/superAdmin', {
+        fetch('https://powerful-savannah-04431.herokuapp.com/users/superAdmin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

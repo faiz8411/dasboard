@@ -62,7 +62,7 @@ const Registration = () => {
                         <input
                             style={{ width: '80%', margin: 10, borderBottom: '' }}
                             // defaultValue="password"
-                            placeholder='password'
+                            placeholder='confirm password'
                             onChange={handleOnBlur}
                             name='password2'
                             type="password" />

@@ -17,7 +17,7 @@ const AllUsers = () => {
 
     console.log(status);
     useEffect(() => {
-        fetch(`http://localhost:5000/allusers`)
+        fetch(`https://powerful-savannah-04431.herokuapp.com/allusers`)
             .then((res) => res.json())
             .then((data) => setUsers(data));
     }, []);

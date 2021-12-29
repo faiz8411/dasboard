@@ -16,14 +16,14 @@ const ManageService = () => {
 
     console.log(status);
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders`)
+        fetch(`https://powerful-savannah-04431.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);
 
     const handleUpdate = (id) => {
         alert('approved successfully')
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+        fetch(`https://powerful-savannah-04431.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
@@ -33,7 +33,7 @@ const ManageService = () => {
     };
     const handleDelete = (id) => {
         alert('you want to delete')
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://powerful-savannah-04431.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
